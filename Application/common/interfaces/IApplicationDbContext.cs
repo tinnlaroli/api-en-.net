@@ -8,6 +8,6 @@ namespace Application.common.interfaces
 {
     public interface IApplicationDbContext
     {
-        DbSet<User>
+        DbSet<User> Users { get; set; }
     }
 }
