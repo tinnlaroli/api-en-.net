@@ -1,24 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Infraestructure.Persistence.Configurations;
+using Application.common.interfaces;
 
 namespace Infraestructure.Persistence
 {
-    public class HealthDbContext : DbContext
+    public class HealthDbContext : DbContext, IApplicationDbContext
     {
-        // se esta inyectando la configuracion de la base de datos en el constructor
-        public HealthDbContext(DbContextOptions<HealthDbContext> options) : base(options) 
+        public HealthDbContext(DbContextOptions<HealthDbContext> options) : base(options)
         {
-        
         }
 
-        // aqui lo que permite es crear las tablas en la base de datos a partir de
-        // las entidades que se encuentran en el proyecto Domain
+        public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(HealthDbContext).Assembly);
         }
-
     }
 }

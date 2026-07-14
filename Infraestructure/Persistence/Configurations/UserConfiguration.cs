@@ -1,26 +1,28 @@
-﻿
-using Domain.Entities;
-
+﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infraestructure.Persistence.Configurations
 {
     internal class UserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<User> builder) {
-            //throw new NotImplementedException();
+        public void Configure(EntityTypeBuilder<User> builder)
+        {
             builder.ToTable("Users");
 
-            builder.HasKey(u => u.User.id)
+            builder.HasKey(u => u.UserId);
 
-            builder.Property(u => u)
+            builder.Property(u => u.UserName)
+                .IsRequired()
+                .HasMaxLength(50);
 
-            builder.Property
+            builder.Property(u => u.Email)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(u => u.Password)
+                .IsRequired()
+                .HasMaxLength(200);
         }
     }
 }
