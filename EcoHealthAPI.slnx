@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Application/Application.csproj" Id="2dca2631-83b1-450a-89b4-8308451f2db8" />
+  <Project Path="Domain/Domain.csproj" Id="998c7c99-95f3-4bf3-9b28-3ceacb308b36" />
+  <Project Path="EcoHealthAPI/EcoHealthAPI.csproj" />
+  <Project Path="Infraestructure/Infraestructure.csproj" Id="9a1a1953-e522-4395-a229-bd31a91a139d" />
+</Solution>
